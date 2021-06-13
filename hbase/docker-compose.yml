@@ -1,0 +1,41 @@
+
+version: '2'
+services:
+  hbase-master:
+    image: zll5267/hbase:${VERSION:-latest}
+    command: master
+    ports:
+      - 16000:16000
+      - 16010:16010
+  hbase-regionserver:
+    image: zll5267/hbase:${VERSION:-latest}
+    command: regionserver
+    ports:
+      - 16030:16030
+      - 16201:16201
+      - 16301:16301
+  hbase-thrift:
+    image: zll5267/hbase:${VERSION:-latest}
+    command: thrift
+    ports:
+      - 19090:9090
+      - 19095:9095
+  hbase-stargate:
+    image: zll5267/hbase:${VERSION:-latest}
+    command: stargate
+    ports:
+      - 18080:8080
+      - 18085:8085
+  zookeeper:
+    image: zll5267/zookeeper:latest
+    ports:
+      - 12181:2181
+  zkwebui:
+    image: zll5267/zookeeper-webui
+    environment:
+      ZK_DEFAULT_NODE: zookeeper:2181
+      HTTP_PORT: 8080
+      USER: zll
+      PASSWORD: zll
+    ports:
+      - "28080:8080"
