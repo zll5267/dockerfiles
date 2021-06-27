@@ -6,3 +6,10 @@ ls /kafka-manager
 create /kafka-manager/mutex ""
 create /kafka-manager/mutex/locks ""
 create /kafka-manager/mutex/leases ""
+
+./bin/zkCli.sh create /kafka-manager ""
+./bin/zkCli.sh create /kafka-manager/mutex ""
+./bin/zkCli.sh create /kafka-manager/mutex/locks ""
+./bin/zkCli.sh create /kafka-manager/mutex/leases ""
+
+docker run -it --rm ubuntu:18.04 bash

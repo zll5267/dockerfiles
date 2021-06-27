@@ -1,7 +1,7 @@
 version: '2'
 services:
   zookeeper:
-    image: zll5267/zookeeper
+    image: zll5267/zookeeper:fix_km_mutex
     ports:
       - "2181:2181"
   zkwebui:
